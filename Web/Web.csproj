@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MFramework.Services.Toastr" Version="1.0.21" />
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="7.0.10" />
   </ItemGroup>
 
@@ -19,6 +20,20 @@
     <Content Remove="$(SpaRoot)**" />
     <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\Models\InvoiceDetails.ts" />
+    <None Remove="ClientApp\Services\InvoiceDetailService.ts" />
+    <None Remove="ClientApp\src\app\invoice\invoice-detail-form.component.html" />
+    <None Remove="ClientApp\src\app\invoice\invoice-detail-form.component.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\Models\InvoiceDetails.ts" />
+    <TypeScriptCompile Include="ClientApp\Services\InvoiceDetailService.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\invoice\invoice-detail-form.component.html" />
+    <TypeScriptCompile Include="ClientApp\src\app\invoice\invoice-detail-form.component.ts" />
   </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

@@ -1,0 +1,42 @@
+<div class="row mt-5">
+    <div class="col-md-6">
+        <div class="card p-4">
+            <h2 class="mb-4">Invoice Details</h2>
+            <app-invoice-detail-form></app-invoice-detail-form>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card p-4">
+            <h2 class="mb-4">List of Invoices</h2>
+            <div class="table-responsive">
+                <table class="table table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th>Card Owner Name</th>
+                            <th>Card Number</th>
+                            <th>Expiration Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let inv of InvoiceService.list">
+                            <td>{{inv.CardOwner}}</td>
+                            <td>{{inv.CardNumber}}</td>
+                            <td>{{inv.ExpirationDate}}</td>
+                            <td class="text-center">
+                                <div class="btn-group" role="group">
+                                    <button class="btn btn-danger btn-sm me-2" (click)="onDelete(inv.InvoiceId)">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                    <button class="btn btn-warning btn-sm" (click)="populateForm(inv)">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
